@@ -2,18 +2,19 @@
 // export function changeVideo(state = null, action) {
 //   switch (action.type) {
 //     case 'CHANGE_VIDEO':
-//       return {};
+//       return action.changeVideo;
 //     default:
 //       return state;
 //   }
 // }
 
 
-var changeVideo = (video) => (
+var changeVideo = (action) => (
   //TODO:  Return some action object to change the currently playing video.
+
    {
     type: 'CHANGE_VIDEO',
-    video: video
+    video: action
    }
 );
 
