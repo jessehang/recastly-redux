@@ -8,7 +8,7 @@ class Search extends React.Component {
       value: ''
     };
   }
-
+  
   handleInputChange(e) {
     this.props.handleSearchInputChange(e.target.value);
     this.setState({

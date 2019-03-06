@@ -8,6 +8,13 @@ import changeVideo from '../actions/currentVideo.js';
 import changeVideoList from '../actions/videoList.js';
 import exampleVideoData from '../data/exampleVideoData.js';
 import store from '../store/store.js';
+import Search from './Search.js';
+
+/*********************** 
+  REDUX
+************************/
+import { connect } from 'react-redux';
+import { currentVideo } from '../actions/currentVideo.js'
 
 export default class App extends React.Component {
   constructor(props) {
@@ -17,6 +24,8 @@ export default class App extends React.Component {
       videos: [],
       currentVideo: null
     };
+    this.getYouTubeVideos = this.getYouTubeVideos.bind(this);
+    this.handleVideoListEntryTitleClick = this.handleVideoListEntryTitleClick.bind(this);
   }
 
   componentDidMount() {
@@ -48,7 +57,7 @@ export default class App extends React.Component {
       <div>
         <nav className="navbar">
           <div className="col-md-6 col-md-offset-3">
-            <Search handleSearchInputChange={handleSearchInputChange}/>
+            <Search handleSearchInputChange={this.getYouTubeVideos}/>
           </div>
         </nav>
         <div className="row">
@@ -57,7 +66,7 @@ export default class App extends React.Component {
           </div>
           <div className="col-md-5">
             <VideoList
-              handleVideoListEntryTitleClick={this.handleVideoListEntryTitleClick.bind(this)}
+              handleVideoListEntryTitleClick={this.handleVideoListEntryTitleClick}
               videos={this.state.videos}
             />
           </div>
